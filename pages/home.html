@@ -1,0 +1,346 @@
+<!-- ===== Hero ===== -->
+        <section class="px-4 py-14 md:py-20">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+
+                <!-- Kiri -->
+                <div>
+                    <p
+                        class="inline-block rounded border border-[#f5c542]/30 bg-[#f5c542]/5 px-2 py-1 font-mono text-[10px] text-[#f5c542]">
+                        FOUNDATION ARCHITECTURE</p>
+                    <h1 class="mt-5 text-4xl md:text-5xl font-bold tracking-tight text-white">What is Linux?</h1>
+                    <p class="mt-5 max-w-xl leading-relaxed text-gray-300">
+                        Strictly speaking, <strong class="text-white">Linux is just the kernel</strong>: an autonomous,
+                        highly optimized low-level supervisor that arbitrates direct hardware access, scheduling CPU
+                        threads, orchestrating physical memory paging, and governing raw I/O pipelines.
+                    </p>
+                    <p class="mt-4 max-w-xl text-sm leading-relaxed text-gray-400">
+                        A standalone kernel cannot boot an interactive shell by itself. To construct a coherent
+                        operating environment, open-source maintainers assemble distributions (<em>distros</em>):
+                        curated compositions uniting the kernel with GNU toolchains, C runtimes, daemon supervisors,
+                        modular package repositories, terminal shells, and complete graphical desktop suites.
+                    </p>
+
+                    <div class="mt-7 flex flex-wrap items-center gap-3">
+                        <a href="#catalog"
+                            class="rounded-md bg-[#f5c542] px-5 py-2.5 text-sm font-semibold text-[#0e0d0a] hover:bg-[#ffd45e] transition-colors focus:outline-none focus:ring-4 focus:ring-[#f5c542]/30">Explore
+                            24 distros →</a>
+                        <a href="#basics"
+                            class="rounded-md border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10 transition-colors focus:outline-none focus:ring-4 focus:ring-white/10">Learn
+                            the basics</a>
+                        <span class="font-mono text-[10px] text-gray-500">Unbiased technical index</span>
+                    </div>
+
+                    <dl class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 rounded-xl border border-white/10 bg-[#16140f] p-5 text-xs">
+                        <div>
+                            <dt class="font-mono text-[10px] text-gray-500">ARCHITECTURE</dt>
+                            <dd class="mt-1 font-semibold text-white">Monolithic</dd>
+                            <dd class="text-gray-500">Dynamic kernel modules</dd>
+                        </div>
+                        <div>
+                            <dt class="font-mono text-[10px] text-gray-500">INIT ECOSYSTEMS</dt>
+                            <dd class="mt-1 font-semibold text-white">systemd / OpenRC</dd>
+                            <dd class="text-gray-500">Runit &amp; s6 alternatives</dd>
+                        </div>
+                        <div>
+                            <dt class="font-mono text-[10px] text-gray-500">PACKAGE FORMATS</dt>
+                            <dd class="mt-1 font-semibold text-white">deb / rpm / pacman</dd>
+                            <dd class="text-gray-500">Plus flatpak &amp; ostree</dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <!-- Kanan: skema + terminal -->
+                <div class="space-y-4">
+                    <div class="rounded-xl border border-white/10 bg-[#16140f] p-5">
+                        <div class="flex items-center justify-between font-mono text-[10px]">
+                            <span class="text-[#f5c542]">SCHEMATIC: STACK_TOPOLOGY</span>
+                            <span class="text-gray-500">Ring 3 - Ring 0</span>
+                        </div>
+
+                        <div class="mt-4 space-y-2 text-xs">
+                            <div class="flex items-center justify-between rounded-md border border-white/10 bg-white/5 px-3 py-2">
+                                <span class="font-semibold text-white">Userland Applications</span>
+                                <span class="font-mono text-[10px] text-gray-500">GNOME, KDE, Neovim, Shell</span>
+                            </div>
+                            <div class="flex items-center justify-between rounded-md border border-white/10 bg-white/5 px-3 py-2">
+                                <span class="font-semibold text-white">GNU/Base Coreutils</span>
+                                <span class="font-mono text-[10px] text-gray-500">bash, coreutils, systemd, glibc</span>
+                            </div>
+                            <div class="rounded-md border border-[#f5c542]/30 bg-[#f5c542]/5 px-3 py-1.5 text-center font-mono text-[10px] text-[#f5c542]">
+                                POSIX System Call Interface (sys_enter / syscall)</div>
+
+                            <div class="rounded-md border border-[#f5c542]/40 bg-[#f5c542]/5 p-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-semibold text-[#f5c542]">Linux Kernel Core</span>
+                                    <span class="font-mono text-[10px] text-gray-500">Privileged (Ring 0)</span>
+                                </div>
+                                <div class="mt-3 grid grid-cols-2 gap-2 text-[11px]">
+                                    <div class="rounded border border-white/10 bg-[#0e0d0a] p-2"><b class="block text-white">CFS / EEVDF</b><span class="text-gray-500">CPU Scheduling</span></div>
+                                    <div class="rounded border border-white/10 bg-[#0e0d0a] p-2"><b class="block text-white">VFS &amp; Page Cache</b><span class="text-gray-500">Memory &amp; Storage</span></div>
+                                    <div class="rounded border border-white/10 bg-[#0e0d0a] p-2"><b class="block text-white">Netfilter / TC</b><span class="text-gray-500">Packet Subsystem</span></div>
+                                    <div class="rounded border border-white/10 bg-[#0e0d0a] p-2"><b class="block text-white">DRM / KMS</b><span class="text-gray-500">Hardware Drivers</span></div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between rounded-md border border-white/10 bg-white/5 px-3 py-2">
+                                <span class="font-semibold text-white">Silicon &amp; Peripherals</span>
+                                <span class="font-mono text-[10px] text-gray-500">x86_64 / AArch64 / RISC-V</span>
+                            </div>
+                        </div>
+
+                        <p class="mt-3 flex items-center justify-between font-mono text-[10px] text-[#f5c542]">
+                            <span>Distros package this stack</span>
+                            <span class="text-gray-500">vfs.mount / 0x00</span>
+                        </p>
+                    </div>
+
+                    <div class="rounded-xl border border-white/10 bg-[#16140f] p-4 font-mono text-xs">
+                        <div class="flex items-center justify-between">
+                            <span class="flex items-center gap-1.5" aria-hidden="true">
+                                <i class="h-2 w-2 rounded-full bg-red-500/70"></i>
+                                <i class="h-2 w-2 rounded-full bg-yellow-500/70"></i>
+                                <i class="h-2 w-2 rounded-full bg-green-500/70"></i>
+                            </span>
+                            <span class="text-[10px] text-gray-500">uname -srvm</span>
+                            <span class="text-[10px] text-[#f5c542]">live output</span>
+                        </div>
+                        <div class="mt-3 space-y-1 overflow-x-auto whitespace-nowrap text-gray-300">
+                            <p><span class="text-gray-500">$</span> uname -a</p>
+                            <p><span class="text-[#f5c542]">Linux</span> workstation 6.11.4-arch1-1 #1 SMP</p>
+                            <p>PREEMPT_DYNAMIC x86_64 GNU/Linux</p>
+                            <p><span class="text-gray-500">$</span> cat /etc/os-release | grep PRETTY_NAME</p>
+                            <p>PRETTY_NAME="Arch Linux (Independent Distribution)"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Four core categories ===== -->
+        <section class="border-t border-white/10 px-4 py-16">
+            <div class="max-w-7xl mx-auto">
+                <p class="font-mono text-[10px] text-[#f5c542]">SYSTEM ARCHETYPES</p>
+                <div class="mt-2 flex flex-wrap items-end justify-between gap-4">
+                    <div class="max-w-2xl">
+                        <h2 class="text-3xl font-bold tracking-tight text-white">Four Core Distro Categories</h2>
+                        <p class="mt-3 text-sm leading-relaxed text-gray-400">Distributions tailor the Linux kernel to
+                            specific workflows. Review the archetypes below to understand the operational trade-offs
+                            between stability, novelty, and footprint.</p>
+                    </div>
+                    <p class="font-mono text-[10px] text-gray-500">Categorized by release cadence &amp; default runlevels</p>
+                </div>
+
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+                    <!-- Desktop -->
+                    <article class="flex flex-col rounded-xl border border-white/10 bg-[#16140f] p-5">
+                        <div class="flex items-center justify-between font-mono text-[10px] text-gray-500">
+                            <span class="grid h-8 w-8 place-items-center rounded-md border border-white/10 text-[#f5c542]" aria-hidden="true">▭</span>
+                            <span>01 / TIER</span>
+                        </div>
+                        <h3 class="mt-4 font-semibold text-white">Everyday Desktops</h3>
+                        <p class="mt-2 grow text-xs leading-relaxed text-gray-400">Built for general computing, creative workstations, media consumption, and newcomers transitioning from macOS or Windows. Emphasizes low-friction installations, automatic hardware recognition, audio servers (PipeWire), and polished graphical application stores.</p>
+                        <div class="mt-4 rounded-md border border-white/10 bg-[#0e0d0a] p-3">
+                            <p class="font-mono text-[10px] text-gray-500">ARCHETYPAL EXAMPLES</p>
+                            <p class="mt-2 flex flex-wrap gap-1.5 font-mono text-[10px] text-[#f5c542]">
+                                <span class="rounded border border-[#f5c542]/30 px-1.5 py-0.5">Fedora Workstation</span>
+                                <span class="rounded border border-[#f5c542]/30 px-1.5 py-0.5">Ubuntu</span>
+                                <span class="rounded border border-[#f5c542]/30 px-1.5 py-0.5">Linux Mint</span>
+                                <span class="rounded border border-[#f5c542]/30 px-1.5 py-0.5">Pop!_OS</span>
+                            </p>
+                        </div>
+                        <p class="mt-3 flex justify-between font-mono text-[10px] text-gray-500"><span>Out-of-box ready</span><span>GNOME / Flatpak</span></p>
+                    </article>
+
+                    <!-- Server -->
+                    <article class="flex flex-col rounded-xl border border-white/10 bg-[#16140f] p-5">
+                        <div class="flex items-center justify-between font-mono text-[10px] text-gray-500">
+                            <span class="grid h-8 w-8 place-items-center rounded-md border border-white/10 text-[#f5c542]" aria-hidden="true">☰</span>
+                            <span>02 / TIER</span>
+                        </div>
+                        <h3 class="mt-4 font-semibold text-white">Servers &amp; Infrastructure</h3>
+                        <p class="mt-2 grow text-xs leading-relaxed text-gray-400">Optimized for headless deployments, cloud virtualization, container clusters, and mission-critical uptime. Employs conservative multi-year release cycles, vetted Long Term Support (LTS) kernels, rigorous QA pipelines, and automated unattended patching frameworks.</p>
+                        <div class="mt-4 rounded-md border border-white/10 bg-[#0e0d0a] p-3">
+                            <p class="font-mono text-[10px] text-gray-500">ARCHETYPAL EXAMPLES</p>
+                            <p class="mt-2 flex flex-wrap gap-1.5 font-mono text-[10px] text-[#f5c542]">
+                                <span class="rounded border border-[#f5c542]/30 px-1.5 py-0.5">Debian Stable</span>
+                                <span class="rounded border border-[#f5c542]/30 px-1.5 py-0.5">RHEL</span>
+                                <span class="rounded border border-[#f5c542]/30 px-1.5 py-0.5">AlmaLinux</span>
+                                <span class="rounded border border-[#f5c542]/30 px-1.5 py-0.5">Ubuntu Server</span>
+                            </p>
+                        </div>
+                        <p class="mt-3 flex justify-between font-mono text-[10px] text-gray-500"><span>High stability</span><span>Headless / SSH</span></p>
+                    </article>
+
+                    <!-- Rolling -->
+                    <article class="flex flex-col rounded-xl border border-white/10 bg-[#16140f] p-5">
+                        <div class="flex items-center justify-between font-mono text-[10px] text-gray-500">
+                            <span class="grid h-8 w-8 place-items-center rounded-md border border-white/10 text-[#f5c542]" aria-hidden="true">↻</span>
+                            <span>03 / TIER</span>
+                        </div>
+                        <h3 class="mt-4 font-semibold text-white">Rolling &amp; Hands-on</h3>
+                        <p class="mt-2 grow text-xs leading-relaxed text-gray-400">Continuous update streams without arbitrary version freezes. Provides direct access to bleeding-edge upstream kernels, fresh compiler versions, and unopinionated base root filesystems. Built for power users and developers who configure every daemon manually.</p>
+                        <div class="mt-4 rounded-md border border-white/10 bg-[#0e0d0a] p-3">
+                            <p class="font-mono text-[10px] text-gray-500">ARCHETYPAL EXAMPLES</p>
+                            <p class="mt-2 flex flex-wrap gap-1.5 font-mono text-[10px] text-[#f5c542]">
+                                <span class="rounded border border-[#f5c542]/30 px-1.5 py-0.5">Arch Linux</span>
+                                <span class="rounded border border-[#f5c542]/30 px-1.5 py-0.5">Gentoo</span>
+                                <span class="rounded border border-[#f5c542]/30 px-1.5 py-0.5">openSUSE Tumbleweed</span>
+                                <span class="rounded border border-[#f5c542]/30 px-1.5 py-0.5">Void</span>
+                            </p>
+                        </div>
+                        <p class="mt-3 flex justify-between font-mono text-[10px] text-gray-500"><span>Continuous sync</span><span>Custom Shell</span></p>
+                    </article>
+
+                    <!-- Lightweight -->
+                    <article class="flex flex-col rounded-xl border border-white/10 bg-[#16140f] p-5">
+                        <div class="flex items-center justify-between font-mono text-[10px] text-gray-500">
+                            <span class="grid h-8 w-8 place-items-center rounded-md border border-white/10 text-[#f5c542]" aria-hidden="true">⌁</span>
+                            <span>04 / TIER</span>
+                        </div>
+                        <h3 class="mt-4 font-semibold text-white">Lightweight &amp; Specialized</h3>
+                        <p class="mt-2 grow text-xs leading-relaxed text-gray-400">Stripped-down footprints optimized for resource-constrained older hardware, RAM-booted live environments, air-gapped security, or industrial auditing. Often replaces glibc with musl or systemd with lightweight init scripts like runit or BusyBox.</p>
+                        <div class="mt-4 rounded-md border border-white/10 bg-[#0e0d0a] p-3">
+                            <p class="font-mono text-[10px] text-gray-500">ARCHETYPAL EXAMPLES</p>
+                            <p class="mt-2 flex flex-wrap gap-1.5 font-mono text-[10px] text-[#f5c542]">
+                                <span class="rounded border border-[#f5c542]/30 px-1.5 py-0.5">Alpine Linux</span>
+                                <span class="rounded border border-[#f5c542]/30 px-1.5 py-0.5">Kali Linux</span>
+                                <span class="rounded border border-[#f5c542]/30 px-1.5 py-0.5">Tails</span>
+                                <span class="rounded border border-[#f5c542]/30 px-1.5 py-0.5">Puppy Linux</span>
+                            </p>
+                        </div>
+                        <p class="mt-3 flex justify-between font-mono text-[10px] text-gray-500"><span>&lt; 500MB footprint</span><span>musl / busybox</span></p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Comparison metrics ===== -->
+        <section class="border-t border-white/10 px-4 py-16">
+            <div class="max-w-7xl mx-auto">
+                <p class="font-mono text-[10px] text-[#f5c542]">INTERACTIVE SPECIFICATION MATRIX</p>
+                <div class="mt-2 flex flex-wrap items-end justify-between gap-4">
+                    <div class="max-w-2xl">
+                        <h2 class="text-3xl font-bold tracking-tight text-white">Distro Comparison Metrics</h2>
+                        <p class="mt-3 text-sm leading-relaxed text-gray-400">Examine key operational metrics across
+                            major distributions: packaging engines, graphical environments, initialization systems, and
+                            primary target environments.</p>
+                    </div>
+                    <a href="#catalog"
+                        class="rounded-md border border-white/15 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white hover:bg-white/10 transition-colors">View
+                        Complete 24-Distro Catalog</a>
+                </div>
+
+                <div class="mt-8 rounded-xl border border-white/10 bg-[#16140f] p-4 md:p-5">
+                    <div class="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4 text-xs">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="font-mono text-[10px] text-gray-500">FILTER BY SAMPLE:</span>
+                            <button type="button" class="rounded bg-[#f5c542] px-2.5 py-1 font-mono text-[10px] font-semibold text-[#0e0d0a]">Fedora 41</button>
+                            <button type="button" class="rounded border border-white/10 px-2.5 py-1 font-mono text-[10px] text-gray-400 hover:bg-white/5">Debian 12</button>
+                            <button type="button" class="rounded border border-white/10 px-2.5 py-1 font-mono text-[10px] text-gray-400 hover:bg-white/5">Arch Linux</button>
+                            <button type="button" class="rounded border border-white/10 px-2.5 py-1 font-mono text-[10px] text-gray-400 hover:bg-white/5">Alpine 3.20</button>
+                        </div>
+                        <span class="font-mono text-[10px] text-gray-500">SYS_ID // ROW_SET: 04_SELECTED_REFS</span>
+                    </div>
+
+                    <!-- Kartu metrik -->
+                    <div class="mt-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-3">
+                        <div class="rounded-lg border border-white/10 bg-[#0e0d0a] p-4">
+                            <p class="flex justify-between font-mono text-[10px] text-gray-500"><span class="text-[#f5c542]">METRIC A</span><span>PKG_MANAGER</span></p>
+                            <h3 class="mt-2 font-semibold text-white">DNF / RPM</h3>
+                            <p class="mt-2 text-xs leading-relaxed text-gray-400">Binary RPM payload containers with delta-RPM capabilities, automated dependency resolution, and transaction rollback history.</p>
+                            <p class="mt-3 flex justify-between border-t border-white/10 pt-2 font-mono text-[10px] text-gray-500"><span class="text-gray-300">CLI: dnf install</span><span>Delta enabled</span></p>
+                        </div>
+                        <div class="rounded-lg border border-white/10 bg-[#0e0d0a] p-4">
+                            <p class="flex justify-between font-mono text-[10px] text-gray-500"><span class="text-[#f5c542]">METRIC B</span><span>DISPLAY_LAYER</span></p>
+                            <h3 class="mt-2 font-semibold text-white">GNOME 47 (Pure Wayland)</h3>
+                            <p class="mt-2 text-xs leading-relaxed text-gray-400">Stock, unskinned GNOME shell using pure Wayland compositor protocol with fractional scaling and pipewire audio.</p>
+                            <p class="mt-3 flex justify-between border-t border-white/10 pt-2 font-mono text-[10px] text-gray-500"><span class="text-gray-300">DISPLAY: Wayland native</span><span>X11 Fallback</span></p>
+                        </div>
+                        <div class="rounded-lg border border-white/10 bg-[#0e0d0a] p-4">
+                            <p class="flex justify-between font-mono text-[10px] text-gray-500"><span class="text-[#f5c542]">METRIC C</span><span>PID_1_DAEMON</span></p>
+                            <h3 class="mt-2 font-semibold text-white">systemd (v256)</h3>
+                            <p class="mt-2 text-xs leading-relaxed text-gray-400">Parallelized unit activation, journald binary logging, cgroups v2 resource slicing, and socket-activated daemon supervision.</p>
+                            <p class="mt-3 flex justify-between border-t border-white/10 pt-2 font-mono text-[10px] text-gray-500"><span class="text-gray-300">CTRL: systemctl start</span><span>journalctl -u</span></p>
+                        </div>
+                        <div class="rounded-lg border border-white/10 bg-[#0e0d0a] p-4">
+                            <p class="flex justify-between font-mono text-[10px] text-gray-500"><span class="text-[#f5c542]">METRIC D</span><span>OPERATOR_PROFILE</span></p>
+                            <h3 class="mt-2 font-semibold text-white">Developers &amp; Workstations</h3>
+                            <p class="mt-2 text-xs leading-relaxed text-gray-400">Software engineers, cloud-native innovators, and users demanding state-of-the-art upstream toolchains within a strictly tested framework.</p>
+                            <p class="mt-3 flex justify-between border-t border-white/10 pt-2 font-mono text-[10px] text-gray-500"><span class="text-gray-300">CADENCE: 6 Months (Rapid)</span><span>13 Mo. EOL</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Tabel -->
+                    <div class="mt-5 overflow-x-auto">
+                        <table class="w-full min-w-[720px] text-left text-xs">
+                            <thead>
+                                <tr class="border-b border-white/10 font-mono text-[10px] uppercase text-gray-500">
+                                    <th scope="col" class="py-2 pr-4 font-medium">Distribution</th>
+                                    <th scope="col" class="py-2 pr-4 font-medium">Category</th>
+                                    <th scope="col" class="py-2 pr-4 font-medium">Package format</th>
+                                    <th scope="col" class="py-2 pr-4 font-medium">Default DE</th>
+                                    <th scope="col" class="py-2 pr-4 font-medium">Init system</th>
+                                    <th scope="col" class="py-2 pr-4 font-medium">Release model</th>
+                                    <th scope="col" class="py-2 text-right font-medium">Field action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-white/5">
+                                <tr>
+                                    <th scope="row" class="py-3 pr-4 font-semibold text-white">Fedora Workstation</th>
+                                    <td class="pr-4 text-gray-400">Everyday Desktop</td>
+                                    <td class="pr-4 font-mono text-[#f5c542]">RPM / dnf</td>
+                                    <td class="pr-4 text-gray-400">GNOME (Wayland)</td>
+                                    <td class="pr-4 text-gray-400">systemd</td>
+                                    <td class="pr-4 text-gray-400">Point (6-month)</td>
+                                    <td class="text-right"><a href="#catalog" class="font-mono text-[10px] text-[#f5c542] hover:underline">Inspect Spec →</a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="py-3 pr-4 font-semibold text-white">Debian GNU/Linux</th>
+                                    <td class="pr-4 text-gray-400">Servers &amp; Baseline</td>
+                                    <td class="pr-4 font-mono text-[#f5c542]">DEB / apt</td>
+                                    <td class="pr-4 text-gray-400">GNOME / Headless</td>
+                                    <td class="pr-4 text-gray-400">systemd (SysV init alt)</td>
+                                    <td class="pr-4 text-gray-400">Stable (2-year cycle)</td>
+                                    <td class="text-right"><a href="#catalog" class="font-mono text-[10px] text-[#f5c542] hover:underline">Inspect Spec →</a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="py-3 pr-4 font-semibold text-white">Arch Linux</th>
+                                    <td class="pr-4 text-gray-400">Rolling &amp; Hands-on</td>
+                                    <td class="pr-4 font-mono text-[#f5c542]">tar.zst / pacman</td>
+                                    <td class="pr-4 text-gray-400">None (User choice)</td>
+                                    <td class="pr-4 text-gray-400">systemd</td>
+                                    <td class="pr-4 text-gray-400">Rolling release</td>
+                                    <td class="text-right"><a href="#catalog" class="font-mono text-[10px] text-[#f5c542] hover:underline">Inspect Spec →</a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="py-3 pr-4 font-semibold text-white">Alpine Linux</th>
+                                    <td class="pr-4 text-gray-400">Lightweight / Cloud</td>
+                                    <td class="pr-4 font-mono text-[#f5c542]">APK / apk</td>
+                                    <td class="pr-4 text-gray-400">Headless (musl libc)</td>
+                                    <td class="pr-4 text-gray-400">OpenRC</td>
+                                    <td class="pr-4 text-gray-400">Stable (6-month)</td>
+                                    <td class="text-right"><a href="#catalog" class="font-mono text-[10px] text-[#f5c542] hover:underline">Inspect Spec →</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CTA ===== -->
+        <section class="px-4 pb-16">
+            <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-6 rounded-xl border border-white/10 bg-[#16140f] p-6 md:p-8">
+                <div class="max-w-2xl">
+                    <p class="font-mono text-[10px] text-[#f5c542]">THE LINUX FIELD GUIDE PURPOSE</p>
+                    <h2 class="mt-2 text-2xl font-bold tracking-tight text-white">Ready to delve deeper into command chains and core architecture?</h2>
+                    <p class="mt-3 text-sm leading-relaxed text-gray-400">Explore our foundational guide breaking down
+                        filesystem standard hierarchy (FHS), kernel privilege rings, standard streams
+                        (stdin/stdout/stderr), and the complete 24-distro classification directory.</p>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <a href="#catalog" class="rounded-md bg-[#f5c542] px-5 py-2.5 text-sm font-semibold text-[#0e0d0a] hover:bg-[#ffd45e] transition-colors">Catalog (24 Distros) →</a>
+                    <a href="#basics" class="rounded-md border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10 transition-colors">Learn the basics</a>
+                </div>
+            </div>
+        </section>

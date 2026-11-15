@@ -1,522 +1,159 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bash Buccaneers</title>
+    <title>Linux Field Guide</title>
     <link href="src/output.css" rel="stylesheet">
 </head>
 
-<body>
-    <!-- Nabar Start -->
-    <nav class="fixed w-full z-20 top-0 inset-s-0 bg-[#0d0f14] border-b border-white/10">
-        <div class="max-w-7xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse md:flex-1">
-                <img src="src/img/Background+Border.svg" class="h-10 w-10" alt="Linux Field Guide Logo">
-                <span class="self-center text-xl text-white font-semibold whitespace-nowrap">Linux Field Guide</span>
-            </a>
-            <div class="flex md:order-3 md:flex-1 md:justify-end space-x-3 md:space-x-0 rtl:space-x-reverse">
-                <button type="button"
-                    class="text-[#8ea6f0] bg-transparent border border-[#2a3350] hover:bg-[#8ea6f0]/10 hover:border-[#8ea6f0]/50 focus:ring-4 focus:ring-[#8ea6f0]/20 font-medium leading-5 rounded-full text-sm px-4 py-2.5 focus:outline-none transition-colors">
-                    Explore distros ↓
-                </button>
-                <button data-collapse-toggle="navbar-sticky" type="button"
-                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-400 rounded-lg md:hidden hover:bg-white/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/20"
-                    aria-controls="navbar-sticky" aria-expanded="false">
-                    <span class="sr-only">Open main menu</span>
-                    <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
-                            d="M5 7h14M5 12h14M5 17h14" /></svg>
-                </button>
-            </div>
-            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-2" id="navbar-sticky">
-                <ul
-                    class="flex flex-col p-4 md:p-0 mt-4 text-sm font-medium border border-white/10 rounded-lg bg-[#141821] md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent">
-                    <li>
-                        <a href="#" class="block py-2 px-3 text-gray-400 hover:text-white md:p-0 transition-colors"
-                            aria-current="page">Overview</a>
-                    </li>
-                    <li>
-                        <a href="#" class="block py-2 px-3 text-gray-400 hover:text-white md:p-0 transition-colors">The
-                            basics</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="block py-2 px-3 text-gray-400 hover:text-white md:p-0 transition-colors">Distro
-                            catalog</a>
-                    </li>
+<body class="bg-[#0e0d0a] text-gray-300 antialiased">
+
+    <!-- ===== Status bar ===== -->
+    <div class="border-b border-white/10 bg-[#0e0d0a] text-[10px] font-mono text-gray-500">
+        <div class="max-w-7xl mx-auto px-4 py-1.5 flex flex-wrap items-center justify-between gap-x-6 gap-y-1">
+            <p class="flex items-center gap-4">
+                <span class="text-[#f5c542]">SYS_REF // REV 6.12-LTS</span>
+                <span class="hidden sm:inline">ARCHIVAL FIELD MANUAL</span>
+            </p>
+            <p class="flex items-center gap-4">
+                <span class="hidden sm:inline">POSIX.1-2017</span>
+                <span>24 CURATED SPECIMENS</span>
+                <span class="text-[#f5c542]">BASH / ZSH READY</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- ===== Navbar ===== -->
+    <nav class="sticky top-0 z-30 bg-[#0e0d0a]/95 backdrop-blur border-b border-white/10">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 px-4 py-3">
+            <a href="#home" class="text-sm font-semibold text-white whitespace-nowrap">Linux Field Guide</a>
+
+            <button data-collapse-toggle="navbar-menu" type="button"
+                class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-gray-400 hover:bg-white/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-[#f5c542]/40"
+                aria-controls="navbar-menu" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
+                </svg>
+            </button>
+
+            <div id="navbar-menu" class="hidden w-full md:flex md:w-auto md:items-center md:gap-4">
+                <ul class="flex flex-col md:flex-row md:items-center gap-1 mt-2 md:mt-0 text-xs font-medium">
+                    <li><a href="#home" data-nav="home" class="block rounded-md px-3 py-1.5 transition-colors">Home</a></li>
+                    <li><a href="#basics" data-nav="basics" class="block rounded-md px-3 py-1.5 transition-colors">Linux Basics</a></li>
+                    <li><a href="#catalog" data-nav="catalog" class="block rounded-md px-3 py-1.5 transition-colors">Distro Catalog</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <!-- Navbar End -->
 
-    <!-- Overview Start -->
-    <section class="min-h-screen bg-[#0d0f14] flex items-center justify-center px-4 pt-24 pb-16 border-t border-white/10">
-        <div class="max-w-4xl w-full text-center">
+    <!-- ===== Halaman dimuat di sini ===== -->
+    <main id="app" aria-live="polite"></main>
 
-            <!-- Judul -->
-            <p class="text-xs font-semibold tracking-widest uppercase text-[#8ea6f0] mb-4">
-                The Linux Field Guide
-            </p>
-            <h1 class="text-5xl md:text-7xl font-bold tracking-tighter text-white mb-8">
-                What is Linux?
-            </h1>
-
-            <!-- Kartu penjelasan -->
-            <div class="text-left bg-[#16181d] border border-white/10 rounded-2xl p-6 md:p-8">
-                <h2 class="text-xl font-semibold text-white mb-3">
-                    The kernel behind an ecosystem
-                </h2>
-                <p class="text-gray-400 leading-relaxed">
-                    Linux is an open-source kernel that manages how software uses a computer’s hardware.
-                    Distributions build on it to create complete operating systems for desktops, servers, and more.
-                </p>
-            </div>
-
-            <!-- Tombol -->
-            <div class="flex flex-wrap items-center justify-center gap-3 mt-8">
-                <a href="#distros"
-                    class="inline-flex items-center gap-2 bg-gray-100 hover:bg-white text-gray-900 text-sm font-semibold rounded-full px-5 py-3 transition-colors focus:outline-none focus:ring-4 focus:ring-white/20">
-                    Explore 24 distros
-                    <span aria-hidden="true">↓</span>
-                </a>
-                <a href="#basics"
-                    class="inline-flex items-center text-white text-sm font-semibold rounded-full px-5 py-3 border border-white/15 hover:bg-white/10 transition-colors focus:outline-none focus:ring-4 focus:ring-white/10">
-                    Learn the basics
-                </a>
-            </div>
-
-        </div>
-    </section>
-    <!-- Overview end -->
-
-    <!-- The Basics Start -->
-    <section id="basics" class="bg-[#0d0f14] px-4 py-16 scroll-mt-16 border-t border-white/10">
-        <div class="max-w-7xl mx-auto">
-
-            <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white text-center mb-8">
-                What makes a Linux distro?
-            </h2>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-
-                <!-- Kartu 1 -->
-                <div class="bg-[#16181d] border border-white/10 rounded-2xl p-6 md:p-8">
-                    <h3 class="text-lg font-semibold text-white mb-3">
-                        What is a Linux distribution?
-                    </h3>
-                    <p class="text-gray-400 leading-relaxed">
-                        A distro combines the Linux kernel with system utilities, a package manager,
-                        and, on desktop editions, a graphical interface.
-                    </p>
-                </div>
-
-                <!-- Kartu 2 -->
-                <div class="bg-[#16181d] border border-white/10 rounded-2xl p-6 md:p-8">
-                    <h3 class="text-lg font-semibold text-white mb-3">
-                        Why use Linux?
-                    </h3>
-                    <p class="text-gray-400 leading-relaxed">
-                        Linux gives you a choice of desktops, workflows, and distributions,
-                        with open-source software you can inspect and adapt.
-                    </p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- The Basics End -->
-    <!-- Distro Catalog Start -->
-    <section id="distros" class="bg-[#0d0f14] px-4 pt-16 pb-10 scroll-mt-16 border-t border-white/10">
-        <div class="max-w-6xl mx-auto">
-
-            <!-- Header -->
-            <p class="text-[11px] font-semibold tracking-widest uppercase text-[#8ea6f0] mb-2">Download directory</p>
-            <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white">Explore 24 Linux distros</h2>
-            <p class="mt-3 text-sm text-gray-400">
-                Compare distributions by use case, then choose an installer from the project’s download page.
-            </p>
-
-            <!-- Chip navigasi -->
-            <div class="flex flex-wrap gap-2 mt-5 pb-6 border-b border-white/10">
-                <a href="#desktop"
-                    class="text-xs text-gray-300 bg-[#16181d] border border-white/10 hover:bg-white/10 rounded-full px-3 py-1.5 transition-colors">Desktop</a>
-                <a href="#servers"
-                    class="text-xs text-gray-300 bg-[#16181d] border border-white/10 hover:bg-white/10 rounded-full px-3 py-1.5 transition-colors">Servers</a>
-                <a href="#rolling"
-                    class="text-xs text-gray-300 bg-[#16181d] border border-white/10 hover:bg-white/10 rounded-full px-3 py-1.5 transition-colors">Rolling
-                    &amp; custom</a>
-                <a href="#specialized"
-                    class="text-xs text-gray-300 bg-[#16181d] border border-white/10 hover:bg-white/10 rounded-full px-3 py-1.5 transition-colors">Specialized</a>
-            </div>
-
-            <!-- ===== Everyday desktops ===== -->
-            <div id="desktop" class="pt-10 pb-10 border-b border-white/10 scroll-mt-20">
-                <div class="flex items-end justify-between">
-                    <h3 class="text-2xl font-bold text-white">Everyday desktops</h3>
-                    <span class="text-2xs font-semibold tracking-widest uppercase text-gray-400">6 distros</span>
-                </div>
-                <p class="mt-1 mb-5 text-sm text-gray-400">For work, study, development, and a first Linux desktop.</p>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                    <article class="flex flex-col bg-[#16181d] border border-white/10 rounded-xl p-4">
-                        <h4 class="font-semibold text-white">Ubuntu</h4>
-                        <p class="mt-2 text-sm text-gray-400 leading-relaxed grow">A general-purpose desktop with guided
-                            installation and a long-term support option. A good starting point for everyday Linux use.
-                        </p>
-                        <div class="mt-4 flex items-center justify-between gap-2">
-                            <a href="https://ubuntu.com/download" target="_blank" rel="noopener"
-                                class="text-xs font-medium text-[#8ea6f0] border border-[#2a3350] hover:bg-[#8ea6f0]/10 rounded-full px-3 py-1.5 transition-colors">Download
-                                ↗</a>
-                            <span class="text-xs text-gray-500">ubuntu.com</span>
-                        </div>
-                    </article>
-
-                    <article class="flex flex-col bg-[#16181d] border border-white/10 rounded-xl p-4">
-                        <h4 class="font-semibold text-white">Linux Mint</h4>
-                        <p class="mt-2 text-sm text-gray-400 leading-relaxed grow">An approachable desktop with a
-                            familiar layout. The Cinnamon edition is a good starting point if you are moving from
-                            Windows.</p>
-                        <div class="mt-4 flex items-center justify-between gap-2">
-                            <a href="https://linuxmint.com/download.php" target="_blank" rel="noopener"
-                                class="text-xs font-medium text-[#8ea6f0] border border-[#2a3350] hover:bg-[#8ea6f0]/10 rounded-full px-3 py-1.5 transition-colors">Download
-                                ↗</a>
-                            <span class="text-xs text-gray-500">linuxmint.com</span>
-                        </div>
-                    </article>
-
-                    <article class="flex flex-col bg-[#16181d] border border-white/10 rounded-xl p-4">
-                        <h4 class="font-semibold text-white">Zorin OS</h4>
-                        <p class="mt-2 text-sm text-gray-400 leading-relaxed grow">A desktop designed for people
-                            switching from Windows or macOS. Start with Core for everyday use.</p>
-                        <div class="mt-4 flex items-center justify-between gap-2">
-                            <a href="https://zorin.com/os/download/" target="_blank" rel="noopener"
-                                class="text-xs font-medium text-[#8ea6f0] border border-[#2a3350] hover:bg-[#8ea6f0]/10 rounded-full px-3 py-1.5 transition-colors">Download
-                                ↗</a>
-                            <span class="text-xs text-gray-500">zorin.com</span>
-                        </div>
-                    </article>
-
-                    <article class="flex flex-col bg-[#16181d] border border-white/10 rounded-xl p-4">
-                        <h4 class="font-semibold text-white">elementary OS</h4>
-                        <p class="mt-2 text-sm text-gray-400 leading-relaxed grow">A desktop built around Pantheon, with
-                            a consistent visual style and a curated app experience.</p>
-                        <div class="mt-4 flex items-center justify-between gap-2">
-                            <a href="https://elementary.io" target="_blank" rel="noopener"
-                                class="text-xs font-medium text-[#8ea6f0] border border-[#2a3350] hover:bg-[#8ea6f0]/10 rounded-full px-3 py-1.5 transition-colors">Download
-                                ↗</a>
-                            <span class="text-xs text-gray-500">elementary.io</span>
-                        </div>
-                    </article>
-
-                    <article class="flex flex-col bg-[#16181d] border border-white/10 rounded-xl p-4">
-                        <h4 class="font-semibold text-white">Pop!_OS</h4>
-                        <p class="mt-2 text-sm text-gray-400 leading-relaxed grow">System76's desktop distribution, with
-                            tiling options for multitasking and separate images for some graphics setups.</p>
-                        <div class="mt-4 flex items-center justify-between gap-2">
-                            <a href="https://system76.com/pop" target="_blank" rel="noopener"
-                                class="text-xs font-medium text-[#8ea6f0] border border-[#2a3350] hover:bg-[#8ea6f0]/10 rounded-full px-3 py-1.5 transition-colors">Download
-                                ↗</a>
-                            <span class="text-xs text-gray-500">system76.com</span>
-                        </div>
-                    </article>
-
-                    <article class="flex flex-col bg-[#16181d] border border-white/10 rounded-xl p-4">
-                        <h4 class="font-semibold text-white">Fedora Workstation</h4>
-                        <p class="mt-2 text-sm text-gray-400 leading-relaxed grow">Fedora's desktop edition, with GNOME
-                            and a focus on current open-source tools. Well suited to desktop development.</p>
-                        <div class="mt-4 flex items-center justify-between gap-2">
-                            <a href="https://fedoraproject.org/workstation/" target="_blank" rel="noopener"
-                                class="text-xs font-medium text-[#8ea6f0] border border-[#2a3350] hover:bg-[#8ea6f0]/10 rounded-full px-3 py-1.5 transition-colors">Download
-                                ↗</a>
-                            <span class="text-xs text-gray-500">fedoraproject.org</span>
-                        </div>
-                    </article>
-                </div>
-            </div>
-
-            <!-- ===== Servers & infrastructure ===== -->
-            <div id="servers" class="pt-10 pb-10 border-b border-white/10 scroll-mt-20">
-                <div class="flex items-end justify-between">
-                    <h3 class="text-2xl font-bold text-white">Servers &amp; infrastructure</h3>
-                    <span class="text-2xs font-semibold tracking-widest uppercase text-gray-400">6 distros</span>
-                </div>
-                <p class="mt-1 mb-5 text-sm text-gray-400">For hosting, cloud workloads, and enterprise development.</p>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                    <article class="flex flex-col bg-[#16181d] border border-white/10 rounded-xl p-4">
-                        <h4 class="font-semibold text-white">Debian</h4>
-                        <p class="mt-2 text-sm text-gray-400 leading-relaxed grow">A community distribution with a
-                            Stable release for people who prefer a predictable package base on desktops or servers.</p>
-                        <div class="mt-4 flex items-center justify-between gap-2">
-                            <a href="https://www.debian.org/distrib/" target="_blank" rel="noopener"
-                                class="text-xs font-medium text-[#8ea6f0] border border-[#2a3350] hover:bg-[#8ea6f0]/10 rounded-full px-3 py-1.5 transition-colors">Download
-                                ↗</a>
-                            <span class="text-xs text-gray-500">debian.org</span>
-                        </div>
-                    </article>
-
-                    <article class="flex flex-col bg-[#16181d] border border-white/10 rounded-xl p-4">
-                        <h4 class="font-semibold text-white">Rocky Linux</h4>
-                        <p class="mt-2 text-sm text-gray-400 leading-relaxed grow">An enterprise Linux distribution in
-                            the RHEL ecosystem, commonly used for servers and infrastructure.</p>
-                        <div class="mt-4 flex items-center justify-between gap-2">
-                            <a href="https://rockylinux.org/download" target="_blank" rel="noopener"
-                                class="text-xs font-medium text-[#8ea6f0] border border-[#2a3350] hover:bg-[#8ea6f0]/10 rounded-full px-3 py-1.5 transition-colors">Download
-                                ↗</a>
-                            <span class="text-xs text-gray-500">rockylinux.org</span>
-                        </div>
-                    </article>
-
-                    <article class="flex flex-col bg-[#16181d] border border-white/10 rounded-xl p-4">
-                        <h4 class="font-semibold text-white">AlmaLinux</h4>
-                        <p class="mt-2 text-sm text-gray-400 leading-relaxed grow">A community-managed enterprise Linux
-                            distribution for server and cloud workloads in the RHEL ecosystem.</p>
-                        <div class="mt-4 flex items-center justify-between gap-2">
-                            <a href="https://almalinux.org/get-almalinux/" target="_blank" rel="noopener"
-                                class="text-xs font-medium text-[#8ea6f0] border border-[#2a3350] hover:bg-[#8ea6f0]/10 rounded-full px-3 py-1.5 transition-colors">Download
-                                ↗</a>
-                            <span class="text-xs text-gray-500">almalinux.org</span>
-                        </div>
-                    </article>
-
-                    <article class="flex flex-col bg-[#16181d] border border-white/10 rounded-xl p-4">
-                        <h4 class="font-semibold text-white">openSUSE Leap</h4>
-                        <p class="mt-2 text-sm text-gray-400 leading-relaxed grow">The regular-release edition of
-                            openSUSE, for desktops and servers that favor a predictable update cadence.</p>
-                        <div class="mt-4 flex items-center justify-between gap-2">
-                            <a href="https://get.opensuse.org/leap/" target="_blank" rel="noopener"
-                                class="text-xs font-medium text-[#8ea6f0] border border-[#2a3350] hover:bg-[#8ea6f0]/10 rounded-full px-3 py-1.5 transition-colors">Download
-                                ↗</a>
-                            <span class="text-xs text-gray-500">get.opensuse.org</span>
-                        </div>
-                    </article>
-
-                    <article class="flex flex-col bg-[#16181d] border border-white/10 rounded-xl p-4">
-                        <h4 class="font-semibold text-white">Oracle Linux</h4>
-                        <p class="mt-2 text-sm text-gray-400 leading-relaxed grow">An enterprise Linux distribution for
-                            on-premises and cloud systems, with Oracle’s Unbreakable Enterprise Kernel available.</p>
-                        <div class="mt-4 flex items-center justify-between gap-2">
-                            <a href="https://yum.oracle.com/oracle-linux-isos.html" target="_blank" rel="noopener"
-                                class="text-xs font-medium text-[#8ea6f0] border border-[#2a3350] hover:bg-[#8ea6f0]/10 rounded-full px-3 py-1.5 transition-colors">Download
-                                ↗</a>
-                            <span class="text-xs text-gray-500">yum.oracle.com</span>
-                        </div>
-                    </article>
-
-                    <article class="flex flex-col bg-[#16181d] border border-white/10 rounded-xl p-4">
-                        <h4 class="font-semibold text-white">CentOS Stream</h4>
-                        <p class="mt-2 text-sm text-gray-400 leading-relaxed grow">A continuously delivered distribution
-                            that previews changes heading toward the next RHEL minor release.</p>
-                        <div class="mt-4 flex items-center justify-between gap-2">
-                            <a href="https://www.centos.org/centos-stream/" target="_blank" rel="noopener"
-                                class="text-xs font-medium text-[#8ea6f0] border border-[#2a3350] hover:bg-[#8ea6f0]/10 rounded-full px-3 py-1.5 transition-colors">Download
-                                ↗</a>
-                            <span class="text-xs text-gray-500">centos.org</span>
-                        </div>
-                    </article>
-                </div>
-            </div>
-
-            <!-- ===== Rolling & hands-on ===== -->
-            <div id="rolling" class="pt-10 pb-10 border-b border-white/10 scroll-mt-20">
-                <div class="flex items-end justify-between">
-                    <h3 class="text-2xl font-bold text-white">Rolling &amp; hands-on</h3>
-                    <span class="text-2xs font-semibold tracking-widest uppercase text-gray-400">6 distros</span>
-                </div>
-                <p class="mt-1 mb-5 text-sm text-gray-400">For users who want to choose and configure more of their
-                    system.</p>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                    <article class="flex flex-col bg-[#16181d] border border-white/10 rounded-xl p-4">
-                        <h4 class="font-semibold text-white">Arch Linux</h4>
-                        <p class="mt-2 text-sm text-gray-400 leading-relaxed grow">A rolling-release distribution that
-                            starts with a minimal base and lets you choose and configure the rest of your system.</p>
-                        <div class="mt-4 flex items-center justify-between gap-2">
-                            <a href="https://archlinux.org/download/" target="_blank" rel="noopener"
-                                class="text-xs font-medium text-[#8ea6f0] border border-[#2a3350] hover:bg-[#8ea6f0]/10 rounded-full px-3 py-1.5 transition-colors">Download
-                                ↗</a>
-                            <span class="text-xs text-gray-500">archlinux.org</span>
-                        </div>
-                    </article>
-
-                    <article class="flex flex-col bg-[#16181d] border border-white/10 rounded-xl p-4">
-                        <h4 class="font-semibold text-white">EndeavourOS</h4>
-                        <p class="mt-2 text-sm text-gray-400 leading-relaxed grow">An Arch-based system with a guided
-                            installer. Suits users who want a head start and are comfortable using the terminal.</p>
-                        <div class="mt-4 flex items-center justify-between gap-2">
-                            <a href="https://endeavouros.com" target="_blank" rel="noopener"
-                                class="text-xs font-medium text-[#8ea6f0] border border-[#2a3350] hover:bg-[#8ea6f0]/10 rounded-full px-3 py-1.5 transition-colors">Download
-                                ↗</a>
-                            <span class="text-xs text-gray-500">endeavouros.com</span>
-                        </div>
-                    </article>
-
-                    <article class="flex flex-col bg-[#16181d] border border-white/10 rounded-xl p-4">
-                        <h4 class="font-semibold text-white">Manjaro</h4>
-                        <p class="mt-2 text-sm text-gray-400 leading-relaxed grow">An Arch-based desktop distribution
-                            with its own repositories and several preconfigured desktop editions.</p>
-                        <div class="mt-4 flex items-center justify-between gap-2">
-                            <a href="https://manjaro.org/download/" target="_blank" rel="noopener"
-                                class="text-xs font-medium text-[#8ea6f0] border border-[#2a3350] hover:bg-[#8ea6f0]/10 rounded-full px-3 py-1.5 transition-colors">Download
-                                ↗</a>
-                            <span class="text-xs text-gray-500">manjaro.org</span>
-                        </div>
-                    </article>
-
-                    <article class="flex flex-col bg-[#16181d] border border-white/10 rounded-xl p-4">
-                        <h4 class="font-semibold text-white">Solus</h4>
-                        <p class="mt-2 text-sm text-gray-400 leading-relaxed grow">An independent rolling-release
-                            distribution focused on the desktop, with several desktop environments to choose from.</p>
-                        <div class="mt-4 flex items-center justify-between gap-2">
-                            <a href="https://getsol.us/download/" target="_blank" rel="noopener"
-                                class="text-xs font-medium text-[#8ea6f0] border border-[#2a3350] hover:bg-[#8ea6f0]/10 rounded-full px-3 py-1.5 transition-colors">Download
-                                ↗</a>
-                            <span class="text-xs text-gray-500">getsol.us</span>
-                        </div>
-                    </article>
-
-                    <article class="flex flex-col bg-[#16181d] border border-white/10 rounded-xl p-4">
-                        <h4 class="font-semibold text-white">Void Linux</h4>
-                        <p class="mt-2 text-sm text-gray-400 leading-relaxed grow">An independent rolling distribution
-                            with the runit init system and XBPS package manager, aimed at hands-on users.</p>
-                        <div class="mt-4 flex items-center justify-between gap-2">
-                            <a href="https://voidlinux.org/download/" target="_blank" rel="noopener"
-                                class="text-xs font-medium text-[#8ea6f0] border border-[#2a3350] hover:bg-[#8ea6f0]/10 rounded-full px-3 py-1.5 transition-colors">Download
-                                ↗</a>
-                            <span class="text-xs text-gray-500">voidlinux.org</span>
-                        </div>
-                    </article>
-
-                    <article class="flex flex-col bg-[#16181d] border border-white/10 rounded-xl p-4">
-                        <h4 class="font-semibold text-white">Gentoo</h4>
-                        <p class="mt-2 text-sm text-gray-400 leading-relaxed grow">A highly configurable distribution
-                            built around Portage. This download points to Gentoo's minimal installer for 64-bit Intel
-                            and AMD PCs.</p>
-                        <div class="mt-4 flex items-center justify-between gap-2">
-                            <a href="https://www.gentoo.org/downloads/" target="_blank" rel="noopener"
-                                class="text-xs font-medium text-[#8ea6f0] border border-[#2a3350] hover:bg-[#8ea6f0]/10 rounded-full px-3 py-1.5 transition-colors">Download
-                                ↗</a>
-                            <span class="text-xs text-gray-500">distfiles-cdn.gentoo.org</span>
-                        </div>
-                    </article>
-                </div>
-            </div>
-
-            <!-- ===== Lightweight & specialized ===== -->
-            <div id="specialized" class="pt-10 pb-10 border-b border-white/10 scroll-mt-20">
-                <div class="flex items-end justify-between">
-                    <h3 class="text-2xl font-bold text-white">Lightweight &amp; specialized</h3>
-                    <span class="text-2xs font-semibold tracking-widest uppercase text-gray-400">6 distros</span>
-                </div>
-                <p class="mt-1 mb-5 text-sm text-gray-400">For older PCs, minimal systems, privacy, or security testing.
-                </p>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                    <article class="flex flex-col bg-[#16181d] border border-white/10 rounded-xl p-4">
-                        <h4 class="font-semibold text-white">Alpine Linux</h4>
-                        <p class="mt-2 text-sm text-gray-400 leading-relaxed grow">A small distribution built around
-                            musl and BusyBox, commonly used for containers and minimal server setups.</p>
-                        <div class="mt-4 flex items-center justify-between gap-2">
-                            <a href="https://alpinelinux.org/downloads/" target="_blank" rel="noopener"
-                                class="text-xs font-medium text-[#8ea6f0] border border-[#2a3350] hover:bg-[#8ea6f0]/10 rounded-full px-3 py-1.5 transition-colors">Download
-                                ↗</a>
-                            <span class="text-xs text-gray-500">alpinelinux.org</span>
-                        </div>
-                    </article>
-
-                    <article class="flex flex-col bg-[#16181d] border border-white/10 rounded-xl p-4">
-                        <h4 class="font-semibold text-white">antiX</h4>
-                        <p class="mt-2 text-sm text-gray-400 leading-relaxed grow">A lightweight Debian-based
-                            distribution that can run live and is designed to make older computers useful.</p>
-                        <div class="mt-4 flex items-center justify-between gap-2">
-                            <a href="https://antixlinux.com" target="_blank" rel="noopener"
-                                class="text-xs font-medium text-[#8ea6f0] border border-[#2a3350] hover:bg-[#8ea6f0]/10 rounded-full px-3 py-1.5 transition-colors">Download
-                                ↗</a>
-                            <span class="text-xs text-gray-500">antixlinux.com</span>
-                        </div>
-                    </article>
-
-                    <article class="flex flex-col bg-[#16181d] border border-white/10 rounded-xl p-4">
-                        <h4 class="font-semibold text-white">MX Linux</h4>
-                        <p class="mt-2 text-sm text-gray-400 leading-relaxed grow">A Debian-based desktop with graphical
-                            MX Tools for common tasks. It offers several desktop editions, including Xfce.</p>
-                        <div class="mt-4 flex items-center justify-between gap-2">
-                            <a href="https://mxlinux.org/download-links/" target="_blank" rel="noopener"
-                                class="text-xs font-medium text-[#8ea6f0] border border-[#2a3350] hover:bg-[#8ea6f0]/10 rounded-full px-3 py-1.5 transition-colors">Download
-                                ↗</a>
-                            <span class="text-xs text-gray-500">sourceforge.net</span>
-                        </div>
-                    </article>
-
-                    <article class="flex flex-col bg-[#16181d] border border-white/10 rounded-xl p-4">
-                        <h4 class="font-semibold text-white">Bodhi Linux</h4>
-                        <p class="mt-2 text-sm text-gray-400 leading-relaxed grow">A lightweight Ubuntu-based
-                            distribution with the Moksha desktop, intended for a small and customizable desktop setup.
-                        </p>
-                        <div class="mt-4 flex items-center justify-between gap-2">
-                            <a href="https://www.bodhilinux.com/download/" target="_blank" rel="noopener"
-                                class="text-xs font-medium text-[#8ea6f0] border border-[#2a3350] hover:bg-[#8ea6f0]/10 rounded-full px-3 py-1.5 transition-colors">Download
-                                ↗</a>
-                            <span class="text-xs text-gray-500">bodhilinux.com</span>
-                        </div>
-                    </article>
-
-                    <article class="flex flex-col bg-[#16181d] border border-white/10 rounded-xl p-4">
-                        <h4 class="font-semibold text-white">Kali Linux</h4>
-                        <p class="mt-2 text-sm text-gray-400 leading-relaxed grow">A distribution for authorized
-                            security testing, with installer, live and virtual-machine image options.</p>
-                        <div class="mt-4 flex items-center justify-between gap-2">
-                            <a href="https://www.kali.org/get-kali/" target="_blank" rel="noopener"
-                                class="text-xs font-medium text-[#8ea6f0] border border-[#2a3350] hover:bg-[#8ea6f0]/10 rounded-full px-3 py-1.5 transition-colors">Download
-                                ↗</a>
-                            <span class="text-xs text-gray-500">kali.org</span>
-                        </div>
-                    </article>
-
-                    <article class="flex flex-col bg-[#16181d] border border-white/10 rounded-xl p-4">
-                        <h4 class="font-semibold text-white">Tails</h4>
-                        <p class="mt-2 text-sm text-gray-400 leading-relaxed grow">A live system that runs from USB and
-                            routes its Internet traffic through Tor. The installation guide walks you through getting an
-                            image.</p>
-                        <div class="mt-4 flex items-center justify-between gap-2">
-                            <a href="https://tails.net/install/" target="_blank" rel="noopener"
-                                class="text-xs font-medium text-[#8ea6f0] border border-[#2a3350] hover:bg-[#8ea6f0]/10 rounded-full px-3 py-1.5 transition-colors">Download
-                                ↗</a>
-                            <span class="text-xs text-gray-500">tails.net</span>
-                        </div>
-                    </article>
-                </div>
-            </div>
-
-            <!-- Catatan bawah -->
-            <p class="pt-6 text-xs text-gray-500">
-                Download links open the project's release page, installation guide, or mirror. Choose the image that
-                matches your hardware.
-            </p>
-        </div>
-    </section>
-
-
-    <!-- Distro Catalog End -->
-    <!-- Footer Start -->
     <!-- ===== Footer ===== -->
-    <footer class="bg-[#0d0f14] border-t border-white/10 px-4 py-6">
-        <div
-            class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-400">
-            <p>© 2026 Linux Field Guide</p>
-            <nav class="flex items-center gap-5">
-                <a href="#basics" class="hover:text-white transition-colors">The basics</a>
-                <a href="#distros" class="hover:text-white transition-colors">Distro catalog</a>
-                <a href="#" class="hover:text-white transition-colors">Back to top ↑</a>
-            </nav>
+    <footer class="border-t border-white/10 px-4 pt-12 pb-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-xs">
+                <div>
+                    <p class="text-sm font-semibold text-white">Linux Field Guide</p>
+                    <p class="mt-3 max-w-xs leading-relaxed text-gray-500">An archival technical manual, core command atlas, and curated distribution index for terminal workstations.</p>
+                </div>
+                <div>
+                    <p class="font-mono text-[10px] text-[#f5c542]">CURRICULUM</p>
+                    <ul class="mt-3 space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#basics" class="hover:text-white transition-colors">Basics</a></li>
+                        <li><a href="#catalog" class="hover:text-white transition-colors">Distro Catalog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="font-mono text-[10px] text-[#f5c542]">REFERENCE INDEX</p>
+                    <ul class="mt-3 space-y-2 text-gray-400">
+                        <li><a href="#catalog" class="hover:text-white transition-colors">24 Distros Catalog</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Kernel Subsystems</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">POSIX Reference</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="font-mono text-[10px] text-[#f5c542]">STANDARDS &amp; CREDITS</p>
+                    <p class="mt-3 leading-relaxed text-gray-500">Released under Creative Commons BY-SA 4.0. Dedicated to open-source computing.</p>
+                    <p class="mt-2 text-gray-400">Linux Documentation Project &amp; Community Contributors</p>
+                </div>
+            </div>
+
+            <div class="mt-10 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-white/10 pt-6 text-[11px] text-gray-500">
+                <p>© 2026 Linux Field Guide. All rights reserved.</p>
+                <nav class="flex items-center gap-5">
+                    <a href="#" class="hover:text-white transition-colors">Documentation License</a>
+                    <a href="#" class="hover:text-white transition-colors">GitHub Repository</a>
+                    <a href="#" class="hover:text-white transition-colors">Source Mirror</a>
+                </nav>
+            </div>
         </div>
     </footer>
-    <!-- Footer End -->
-    <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+
+    <script src="./node_modules/flowbite/dist/flowbite.min.js"></script>
+
+    <!-- ===== Router sederhana ===== -->
+    <script>
+        const pages = {
+            home: { file: 'pages/home.html', title: 'Linux Field Guide' },
+            basics: { file: 'pages/basics.html', title: 'Linux Basics | Linux Field Guide' },
+            catalog: { file: 'pages/catalog.html', title: 'Distro Catalog | Linux Field Guide' }
+        };
+        const DEFAULT_PAGE = 'home';
+        const ACTIVE = ['bg-[#f5c542]', 'text-[#0e0d0a]', 'font-semibold'];
+        const IDLE = ['text-gray-400', 'hover:text-white', 'hover:bg-white/5'];
+        const app = document.getElementById('app');
+
+        function setActiveNav(name) {
+            document.querySelectorAll('[data-nav]').forEach(link => {
+                const active = link.dataset.nav === name;
+                link.classList.remove(...ACTIVE, ...IDLE);
+                link.classList.add(...(active ? ACTIVE : IDLE));
+                active ? link.setAttribute('aria-current', 'page') : link.removeAttribute('aria-current');
+            });
+        }
+
+        async function loadPage() {
+            if (window.__cleanup) { window.__cleanup(); window.__cleanup = null; }
+            const name = location.hash.slice(1);
+            const key = pages[name] ? name : DEFAULT_PAGE;
+            try {
+                const res = await fetch(pages[key].file);
+                if (!res.ok) throw new Error(res.status);
+                app.innerHTML = await res.text();
+                // <script> hasil innerHTML tidak otomatis jalan, jadi dibuat ulang
+                app.querySelectorAll('script').forEach(old => {
+                    const s = document.createElement('script');
+                    s.textContent = old.textContent;
+                    old.replaceWith(s);
+                });
+            } catch (err) {
+                app.innerHTML = '<p class="px-4 py-20 text-center text-sm text-gray-400">Halaman gagal dimuat. Jalankan lewat server lokal (Live Server / npx serve), bukan dengan membuka file langsung.</p>';
+            }
+            document.title = pages[key].title;
+            setActiveNav(key);
+            window.scrollTo(0, 0);
+
+            // tutup menu mobile setelah pindah halaman
+            const menu = document.getElementById('navbar-menu');
+            if (window.innerWidth < 768) menu.classList.add('hidden');
+        }
+
+        // scroll ke bagian di dalam halaman (chip kategori di katalog)
+        document.addEventListener('click', e => {
+            const t = e.target.closest('[data-scroll]');
+            if (!t) return;
+            e.preventDefault();
+            document.getElementById(t.dataset.scroll)?.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        window.addEventListener('hashchange', loadPage);
+        loadPage();
+    </script>
 </body>
 
 </html>
