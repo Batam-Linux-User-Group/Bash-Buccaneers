@@ -1,0 +1,631 @@
+[
+ {
+  "slug": "ubuntu",
+  "name": "Ubuntu",
+  "catId": "desktop",
+  "category": "Everyday Desktops",
+  "title": "Ubuntu 24.04 LTS (Noble Numbat)",
+  "tags": [
+   "Desktop & Server ISO",
+   "64-bit Edition",
+   "Support until 2029"
+  ],
+  "vendor": "Canonical",
+  "file": "ubuntu-24.04-desktop-amd64.iso",
+  "size": "5.7 GB",
+  "spec": {
+   "kernel": "Linux 6.8.0 HWE",
+   "arch": "x86_64 / amd64",
+   "fs": "ext4 / zfs experimental",
+   "init": "systemd v255.4"
+  },
+  "arm": true,
+  "sums": "SHA256SUMS",
+  "dl": "https://releases.ubuntu.com/noble/",
+  "host": "releases.ubuntu.com",
+  "desc": "Canonical Ltd. upstream stable release build. Clean ISO media free of distributor modifications.",
+  "dd": "ubuntu.iso",
+  "fingerprint": "8439 38DF 228D 22F7 B374 2BC0 D94A A3F0 EFE2 1092",
+  "authority": "Ubuntu Image Signing Authority <cdimage@ubuntu.com>"
+ },
+ {
+  "slug": "linux-mint",
+  "name": "Linux Mint",
+  "catId": "desktop",
+  "category": "Everyday Desktops",
+  "title": "Linux Mint 22 (Wilma)",
+  "tags": [
+   "Desktop ISO",
+   "64-bit Edition",
+   "Ubuntu LTS base"
+  ],
+  "vendor": "Linux Mint",
+  "file": "linuxmint-22-cinnamon-64bit.iso",
+  "size": "varies by edition",
+  "spec": {
+   "kernel": "Ubuntu LTS kernel",
+   "arch": "x86_64 / amd64",
+   "fs": "ext4",
+   "init": "systemd"
+  },
+  "arm": false,
+  "sums": "sha256sum.txt",
+  "dl": "https://linuxmint.com/download.php",
+  "host": "linuxmint.com",
+  "desc": "Elegant, traditional desktop paradigm with Cinnamon, focused on familiarity and out-of-the-box usability."
+ },
+ {
+  "slug": "zorin-os",
+  "name": "Zorin OS",
+  "catId": "desktop",
+  "category": "Everyday Desktops",
+  "title": "Zorin OS 17.2 Core",
+  "tags": [
+   "Desktop ISO",
+   "64-bit Edition",
+   "Ubuntu LTS base"
+  ],
+  "vendor": "Zorin Group",
+  "file": "Zorin-OS-17.2-Core-64-bit.iso",
+  "size": "varies by edition",
+  "spec": {
+   "kernel": "Ubuntu LTS kernel",
+   "arch": "x86_64 / amd64",
+   "fs": "ext4",
+   "init": "systemd"
+  },
+  "arm": false,
+  "sums": "SHA256SUMS",
+  "dl": "https://zorin.com/os/download/",
+  "host": "zorin.com",
+  "desc": "Familiar interface designed to ease switching from Windows or macOS. Start with Core for everyday use."
+ },
+ {
+  "slug": "elementary-os",
+  "name": "elementary OS",
+  "catId": "desktop",
+  "category": "Everyday Desktops",
+  "title": "elementary OS 7.1 (Horus)",
+  "tags": [
+   "Desktop ISO",
+   "64-bit Edition",
+   "Curated release"
+  ],
+  "vendor": "elementary, Inc.",
+  "file": "elementaryos-7.1-stable-amd64.iso",
+  "size": "varies by edition",
+  "spec": {
+   "kernel": "Ubuntu LTS kernel",
+   "arch": "x86_64 / amd64",
+   "fs": "ext4",
+   "init": "systemd"
+  },
+  "arm": false,
+  "sums": "SHA256SUMS",
+  "dl": "https://elementary.io",
+  "host": "elementary.io",
+  "desc": "Thoughtfully curated human interface guidelines with a privacy-first AppCenter."
+ },
+ {
+  "slug": "pop-os",
+  "name": "Pop!_OS",
+  "catId": "desktop",
+  "category": "Everyday Desktops",
+  "title": "Pop!_OS 22.04 LTS",
+  "tags": [
+   "Desktop ISO",
+   "64-bit Edition",
+   "LTS base"
+  ],
+  "vendor": "System76",
+  "file": "pop-os_22.04_amd64_intel.iso",
+  "size": "varies by GPU image",
+  "spec": {
+   "kernel": "Ubuntu LTS-based kernel",
+   "arch": "x86_64 / amd64",
+   "fs": "ext4",
+   "init": "systemd"
+  },
+  "arm": "partial",
+  "sums": "SHA256SUMS",
+  "dl": "https://system76.com/pop",
+  "host": "system76.com",
+  "desc": "Engineered by System76 for STEM workflows, with hybrid graphics switching and automatic window tiling."
+ },
+ {
+  "slug": "fedora-workstation",
+  "name": "Fedora Workstation",
+  "catId": "desktop",
+  "category": "Everyday Desktops",
+  "title": "Fedora Workstation 41",
+  "tags": [
+   "Live Workstation ISO",
+   "64-bit Edition",
+   "Point release"
+  ],
+  "vendor": "Fedora Project",
+  "file": "Fedora-Workstation-Live-x86_64-41-*.iso",
+  "size": "varies by release",
+  "spec": {
+   "kernel": "Latest stable upstream",
+   "arch": "x86_64 / amd64",
+   "fs": "Btrfs",
+   "init": "systemd"
+  },
+  "arm": true,
+  "sums": "CHECKSUM",
+  "dl": "https://fedoraproject.org/workstation/",
+  "host": "fedoraproject.org",
+  "desc": "Upstream innovation showcase with vanilla GNOME, Wayland by default, and cutting-edge software."
+ },
+ {
+  "slug": "debian",
+  "name": "Debian",
+  "catId": "servers",
+  "category": "Servers & Infrastructure",
+  "title": "Debian 12 (Bookworm)",
+  "tags": [
+   "Installer ISO",
+   "64-bit Edition",
+   "Stable release"
+  ],
+  "vendor": "Debian Project",
+  "file": "debian-12.*-amd64-netinst.iso",
+  "size": "varies by image",
+  "spec": {
+   "kernel": "Debian stable kernel",
+   "arch": "x86_64 / amd64",
+   "fs": "ext4",
+   "init": "systemd"
+  },
+  "arm": true,
+  "sums": "SHA256SUMS",
+  "dl": "https://www.debian.org/distrib/",
+  "host": "www.debian.org",
+  "desc": "The universal operating system. Rock-solid package repositories and fair-minded community governance."
+ },
+ {
+  "slug": "rocky-linux",
+  "name": "Rocky Linux",
+  "catId": "servers",
+  "category": "Servers & Infrastructure",
+  "title": "Rocky Linux 9.4 (Blue Onyx)",
+  "tags": [
+   "Server ISO",
+   "64-bit Edition",
+   "RHEL-compatible"
+  ],
+  "vendor": "Rocky Enterprise Software Foundation",
+  "file": "Rocky-9.*-x86_64-minimal.iso",
+  "size": "varies by image",
+  "spec": {
+   "kernel": "RHEL-compatible kernel",
+   "arch": "x86_64 / amd64",
+   "fs": "XFS",
+   "init": "systemd"
+  },
+  "arm": true,
+  "sums": "CHECKSUM",
+  "dl": "https://rockylinux.org/download",
+  "host": "rockylinux.org",
+  "desc": "Bug-for-bug compatible downstream RHEL alternative built by the community for enterprise Linux."
+ },
+ {
+  "slug": "almalinux",
+  "name": "AlmaLinux",
+  "catId": "servers",
+  "category": "Servers & Infrastructure",
+  "title": "AlmaLinux 9.4 (Seafoam)",
+  "tags": [
+   "Server ISO",
+   "64-bit Edition",
+   "RHEL-compatible"
+  ],
+  "vendor": "AlmaLinux OS Foundation",
+  "file": "AlmaLinux-9.*-x86_64-minimal.iso",
+  "size": "varies by image",
+  "spec": {
+   "kernel": "RHEL-compatible kernel",
+   "arch": "x86_64 / amd64",
+   "fs": "XFS",
+   "init": "systemd"
+  },
+  "arm": true,
+  "sums": "CHECKSUM",
+  "dl": "https://almalinux.org/get-almalinux/",
+  "host": "almalinux.org",
+  "desc": "Community-governed enterprise Linux with a binary-compatible RHEL base and long support window."
+ },
+ {
+  "slug": "opensuse-leap",
+  "name": "openSUSE Leap",
+  "catId": "servers",
+  "category": "Servers & Infrastructure",
+  "title": "openSUSE Leap 15.6",
+  "tags": [
+   "Installer DVD",
+   "64-bit Edition",
+   "Regular release"
+  ],
+  "vendor": "openSUSE Project",
+  "file": "openSUSE-Leap-15.6-DVD-x86_64-Media.iso",
+  "size": "varies by image",
+  "spec": {
+   "kernel": "SUSE Enterprise-based kernel",
+   "arch": "x86_64 / amd64",
+   "fs": "Btrfs (root)",
+   "init": "systemd"
+  },
+  "arm": true,
+  "sums": "SHA256SUMS",
+  "dl": "https://get.opensuse.org/leap/",
+  "host": "get.opensuse.org",
+  "desc": "Enterprise-grade foundation built on SUSE Linux Enterprise sources, with the YaST control panel."
+ },
+ {
+  "slug": "oracle-linux",
+  "name": "Oracle Linux",
+  "catId": "servers",
+  "category": "Servers & Infrastructure",
+  "title": "Oracle Linux 9.4 (UEK)",
+  "tags": [
+   "Server DVD",
+   "64-bit Edition",
+   "RHEL-compatible"
+  ],
+  "vendor": "Oracle",
+  "file": "OracleLinux-R9-U*-x86_64-dvd.iso",
+  "size": "varies by image",
+  "spec": {
+   "kernel": "UEK or RHCK",
+   "arch": "x86_64 / amd64",
+   "fs": "XFS",
+   "init": "systemd"
+  },
+  "arm": true,
+  "sums": "SHA256SUMS",
+  "dl": "https://yum.oracle.com/oracle-linux-isos.html",
+  "host": "yum.oracle.com",
+  "desc": "Enterprise Linux compatible distribution tuned for databases and cloud, with Oracle's Unbreakable Enterprise Kernel."
+ },
+ {
+  "slug": "centos-stream",
+  "name": "CentOS Stream",
+  "catId": "servers",
+  "category": "Servers & Infrastructure",
+  "title": "CentOS Stream 9",
+  "tags": [
+   "Server DVD",
+   "64-bit Edition",
+   "Rolling midstream"
+  ],
+  "vendor": "CentOS Project",
+  "file": "CentOS-Stream-9-latest-x86_64-dvd1.iso",
+  "size": "varies by image",
+  "spec": {
+   "kernel": "RHEL-next kernel",
+   "arch": "x86_64 / amd64",
+   "fs": "XFS",
+   "init": "systemd"
+  },
+  "arm": true,
+  "sums": "CHECKSUM",
+  "dl": "https://www.centos.org/centos-stream/",
+  "host": "www.centos.org",
+  "desc": "Midstream development platform tracking just ahead of current RHEL minor releases."
+ },
+ {
+  "slug": "arch-linux",
+  "name": "Arch Linux",
+  "catId": "rolling",
+  "category": "Rolling & Hands-On",
+  "title": "Arch Linux",
+  "tags": [
+   "Install ISO",
+   "64-bit Edition",
+   "Rolling release"
+  ],
+  "vendor": "Arch Linux",
+  "file": "archlinux-YYYY.MM.DD-x86_64.iso",
+  "size": "varies by month",
+  "spec": {
+   "kernel": "Latest stable mainline",
+   "arch": "x86_64 / amd64",
+   "fs": "User choice",
+   "init": "systemd"
+  },
+  "arm": false,
+  "sums": "sha256sums.txt",
+  "dl": "https://archlinux.org/download/",
+  "host": "archlinux.org",
+  "desc": "Minimalist DIY rolling release with bleeding-edge packages, pacman, and the User Repository (AUR)."
+ },
+ {
+  "slug": "endeavouros",
+  "name": "EndeavourOS",
+  "catId": "rolling",
+  "category": "Rolling & Hands-On",
+  "title": "EndeavourOS",
+  "tags": [
+   "Installer ISO",
+   "64-bit Edition",
+   "Rolling release"
+  ],
+  "vendor": "EndeavourOS",
+  "file": "EndeavourOS_*.iso",
+  "size": "varies by release",
+  "spec": {
+   "kernel": "Latest stable mainline",
+   "arch": "x86_64 / amd64",
+   "fs": "ext4 (Btrfs optional)",
+   "init": "systemd"
+  },
+  "arm": "partial",
+  "sums": "SHA256SUMS",
+  "dl": "https://endeavouros.com",
+  "host": "endeavouros.com",
+  "desc": "Terminal-centric Arch derivative with a calm, friendly installer and a welcoming community."
+ },
+ {
+  "slug": "manjaro",
+  "name": "Manjaro",
+  "catId": "rolling",
+  "category": "Rolling & Hands-On",
+  "title": "Manjaro 24.0",
+  "tags": [
+   "Desktop ISO",
+   "64-bit Edition",
+   "Rolling release"
+  ],
+  "vendor": "Manjaro",
+  "file": "manjaro-kde-*.iso",
+  "size": "varies by edition",
+  "spec": {
+   "kernel": "Manjaro-tested stable",
+   "arch": "x86_64 / amd64",
+   "fs": "ext4",
+   "init": "systemd"
+  },
+  "arm": "partial",
+  "sums": "SHA256SUMS",
+  "dl": "https://manjaro.org/download/",
+  "host": "manjaro.org",
+  "desc": "Accessible rolling release with curated package updates, graphical hardware detection, and a driver manager."
+ },
+ {
+  "slug": "solus",
+  "name": "Solus",
+  "catId": "rolling",
+  "category": "Rolling & Hands-On",
+  "title": "Solus 4.5 (Resilience)",
+  "tags": [
+   "Desktop ISO",
+   "64-bit Edition",
+   "Rolling release"
+  ],
+  "vendor": "Solus",
+  "file": "Solus-Budgie-Stable-*.iso",
+  "size": "varies by edition",
+  "spec": {
+   "kernel": "Latest stable / LTS",
+   "arch": "x86_64 / amd64",
+   "fs": "ext4",
+   "init": "systemd"
+  },
+  "arm": false,
+  "sums": "SHA256SUMS",
+  "dl": "https://getsol.us/download/",
+  "host": "getsol.us",
+  "desc": "Independent, curated rolling distribution featuring the homegrown Budgie desktop."
+ },
+ {
+  "slug": "void-linux",
+  "name": "Void Linux",
+  "catId": "rolling",
+  "category": "Rolling & Hands-On",
+  "title": "Void Linux",
+  "tags": [
+   "Live ISO",
+   "64-bit Edition",
+   "Rolling release"
+  ],
+  "vendor": "Void Linux",
+  "file": "void-live-x86_64-*-base.iso",
+  "size": "varies by image",
+  "spec": {
+   "kernel": "Mainline / LTS",
+   "arch": "x86_64 / amd64",
+   "fs": "User choice",
+   "init": "runit"
+  },
+  "arm": true,
+  "sums": "sha256sum.txt",
+  "dl": "https://voidlinux.org/download/",
+  "host": "voidlinux.org",
+  "desc": "Independent rolling Linux built from scratch with the runit init system and xbps package manager."
+ },
+ {
+  "slug": "gentoo",
+  "name": "Gentoo",
+  "catId": "rolling",
+  "category": "Rolling & Hands-On",
+  "title": "Gentoo Linux",
+  "tags": [
+   "Minimal Install ISO",
+   "64-bit Edition",
+   "Rolling release"
+  ],
+  "vendor": "Gentoo",
+  "file": "install-amd64-minimal-*.iso",
+  "size": "varies by build",
+  "spec": {
+   "kernel": "User-compiled kernel",
+   "arch": "x86_64 / amd64",
+   "fs": "User choice",
+   "init": "OpenRC or systemd"
+  },
+  "arm": true,
+  "sums": "SHA256SUMS",
+  "dl": "https://www.gentoo.org/downloads/",
+  "host": "www.gentoo.org",
+  "desc": "Source-based meta-distribution that compiles packages from source with fine-grained USE flags."
+ },
+ {
+  "slug": "alpine-linux",
+  "name": "Alpine Linux",
+  "catId": "specialized",
+  "category": "Lightweight & Specialized",
+  "title": "Alpine Linux 3.20",
+  "tags": [
+   "Standard ISO",
+   "64-bit Edition",
+   "Stable branch"
+  ],
+  "vendor": "Alpine Linux",
+  "file": "alpine-standard-3.20.*-x86_64.iso",
+  "size": "varies by image",
+  "spec": {
+   "kernel": "linux-lts",
+   "arch": "x86_64 / amd64",
+   "fs": "ext4",
+   "init": "OpenRC"
+  },
+  "arm": true,
+  "sums": "<iso-file>.sha256",
+  "dl": "https://alpinelinux.org/downloads/",
+  "host": "alpinelinux.org",
+  "desc": "Ultra-compact, security-oriented distro built on musl libc and BusyBox, popular for containers and tiny systems."
+ },
+ {
+  "slug": "antix",
+  "name": "antiX",
+  "catId": "specialized",
+  "category": "Lightweight & Specialized",
+  "title": "antiX 23.1",
+  "tags": [
+   "Live ISO",
+   "32 / 64-bit",
+   "Debian stable base"
+  ],
+  "vendor": "antiX",
+  "file": "antiX-23.*_x64-full.iso",
+  "size": "varies by edition",
+  "spec": {
+   "kernel": "Debian-based kernel",
+   "arch": "x86 / x86_64",
+   "fs": "ext4",
+   "init": "SysVinit / runit"
+  },
+  "arm": false,
+  "sums": "SHA256SUMS",
+  "dl": "https://antixlinux.com",
+  "host": "antixlinux.com",
+  "desc": "Systemd-free, ultra-lightweight live distro that runs well on legacy 32-bit and 64-bit machines.",
+  "x86": "Older 32-bit and 64-bit PCs, including legacy hardware."
+ },
+ {
+  "slug": "mx-linux",
+  "name": "MX Linux",
+  "catId": "specialized",
+  "category": "Lightweight & Specialized",
+  "title": "MX Linux 23.3 (Libretto)",
+  "tags": [
+   "Live ISO",
+   "64-bit Edition",
+   "Debian stable base"
+  ],
+  "vendor": "MX Linux",
+  "file": "MX-23.*_x64.iso",
+  "size": "varies by edition",
+  "spec": {
+   "kernel": "Debian stable / AHS kernel",
+   "arch": "x86_64 / amd64",
+   "fs": "ext4",
+   "init": "SysVinit (systemd available)"
+  },
+  "arm": "partial",
+  "sums": "SHA256SUMS",
+  "dl": "https://mxlinux.org/download-links/",
+  "host": "mxlinux.org",
+  "desc": "Pragmatic mid-weight desktop combining a rock-solid Debian base with the robust MX Tools suite."
+ },
+ {
+  "slug": "bodhi-linux",
+  "name": "Bodhi Linux",
+  "catId": "specialized",
+  "category": "Lightweight & Specialized",
+  "title": "Bodhi Linux 7.0.0",
+  "tags": [
+   "Desktop ISO",
+   "64-bit Edition",
+   "Ubuntu LTS base"
+  ],
+  "vendor": "Bodhi Linux",
+  "file": "bodhi-7.*-64.iso",
+  "size": "varies by edition",
+  "spec": {
+   "kernel": "Ubuntu LTS kernel",
+   "arch": "x86_64 / amd64",
+   "fs": "ext4",
+   "init": "systemd"
+  },
+  "arm": false,
+  "sums": "SHA256SUMS",
+  "dl": "https://www.bodhilinux.com/download/",
+  "host": "www.bodhilinux.com",
+  "desc": "Minimalist system featuring the lightweight, fast Moksha desktop based on Enlightenment."
+ },
+ {
+  "slug": "kali-linux",
+  "name": "Kali Linux",
+  "catId": "specialized",
+  "category": "Lightweight & Specialized",
+  "title": "Kali Linux 2024.2",
+  "tags": [
+   "Installer ISO",
+   "64-bit Edition",
+   "Rolling release"
+  ],
+  "vendor": "OffSec",
+  "file": "kali-linux-2024.2-installer-amd64.iso",
+  "size": "varies by image",
+  "spec": {
+   "kernel": "Debian testing-based kernel",
+   "arch": "x86_64 / amd64",
+   "fs": "ext4",
+   "init": "systemd"
+  },
+  "arm": true,
+  "sums": "SHA256SUMS",
+  "dl": "https://www.kali.org/get-kali/",
+  "host": "www.kali.org",
+  "desc": "Advanced penetration testing and security auditing platform with hundreds of preinstalled tools."
+ },
+ {
+  "slug": "tails",
+  "name": "Tails",
+  "catId": "specialized",
+  "category": "Lightweight & Specialized",
+  "title": "Tails 6.7",
+  "tags": [
+   "USB Image",
+   "64-bit Edition",
+   "Regular releases"
+  ],
+  "vendor": "Tails Project",
+  "file": "tails-amd64-6.*.img",
+  "size": "varies by release",
+  "spec": {
+   "kernel": "Debian-based hardened kernel",
+   "arch": "x86_64 / amd64",
+   "fs": "Live (RAM only)",
+   "init": "systemd"
+  },
+  "arm": false,
+  "sums": "SHA256SUMS",
+  "dl": "https://tails.net/install/",
+  "host": "tails.net",
+  "desc": "The Amnesic Incognito Live System. Routes traffic through Tor and leaves no trace on the host machine.",
+  "dd": "tails.img"
+ }
+]

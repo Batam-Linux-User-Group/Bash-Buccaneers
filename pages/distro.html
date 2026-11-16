@@ -1,0 +1,195 @@
+<div id="distro-root">
+    <p class="px-4 py-24 text-center text-sm text-gray-500">Loading...</p>
+</div>
+
+<script>
+(function () {
+    const root = document.getElementById('distro-root');
+    const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+    const ARM = {
+        true: 'Official ARM64 builds are published. Check the download page for supported boards and virtual machines.',
+        partial: 'ARM builds exist as separate images or editions. Check the project site for supported devices.',
+        false: 'No official ARM64 image is listed here. Use x86_64 hardware or a virtual machine.'
+    };
+    const copyIcon = '<svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="2" d="M8 8h11v13H8zM5 16H4V3h11v2"/></svg>';
+    const iconBox = path => `<span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/5 text-[#f5c542]" aria-hidden="true"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${path}"/></svg></span>`;
+    const ICON = {
+        chip: 'M9 3v2m6-2v2M9 19v2m6-2v2M3 9h2m-2 6h2m14-6h2m-2 6h2M7 7h10v10H7z',
+        lock: 'M7 11V8a5 5 0 0 1 10 0v3M6 11h12v10H6z',
+        shield: 'M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6z',
+        disc: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z',
+        down: 'M12 4v11m0 0-4-4m4 4 4-4M5 20h14'
+    };
+    const check = '<svg class="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#f5c542]" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 12 5 5L20 7"/></svg>';
+
+    function codeBox(label, lines, copyText) {
+        return `<div class="overflow-hidden rounded-lg border border-white/10 bg-[#0e0d0a]">
+            <div class="flex items-center justify-between border-b border-white/10 px-3 py-1.5 font-mono text-[10px] text-gray-500">
+                <span>${esc(label)}</span>
+                <button type="button" data-copy="${esc(copyText)}" class="inline-flex items-center gap-1 hover:text-white">${copyIcon}<span>copy</span></button>
+            </div>
+            <pre class="overflow-x-auto whitespace-pre-wrap break-all p-3 font-mono text-xs leading-relaxed text-gray-300">${lines}</pre>
+        </div>`;
+    }
+
+    function render(d, total) {
+        const shortTitle = d.title;
+        const sums = d.sums;
+        const verifyCmd = sums.startsWith('<')
+            ? `sha256sum -c ${sums}`
+            : `sha256sum -c ${sums} 2>&1 | grep OK`;
+        const ddFile = d.dd || 'downloaded.iso';
+        const ddCmd = `dd if=${ddFile} of=/dev/sdX bs=4M status=progress`;
+        const sigBox = d.fingerprint
+            ? `<div class="mt-3 rounded-lg border border-[#f5c542]/30 bg-[#f5c542]/5 p-3">
+                    <p class="font-mono text-[11px] text-[#f5c542]">GPG Keyring Fingerprint</p>
+                    <p class="mt-2 break-words font-mono text-xs leading-relaxed text-gray-200">${esc(d.fingerprint)}</p>
+                    <p class="mt-2 text-[11px] text-gray-500">${esc(d.authority)}</p>
+               </div>`
+            : `<div class="mt-3 rounded-lg border border-[#f5c542]/30 bg-[#f5c542]/5 p-3">
+                    <p class="font-mono text-[11px] text-[#f5c542]">Signature Check</p>
+                    <p class="mt-2 text-xs leading-relaxed text-gray-400">The signing key fingerprint is published on ${esc(d.vendor)}'s official download page. Compare it with a second independent source before trusting it.</p>
+               </div>`;
+
+        document.title = d.title + ' | Linux Field Guide';
+        root.innerHTML = `
+        <!-- Breadcrumb -->
+        <div class="border-b border-white/10 px-4 py-2">
+            <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 font-mono text-[11px] text-gray-500">
+                <p class="flex flex-wrap items-center gap-2">
+                    <a href="#catalog" class="rounded bg-[#f5c542] px-2 py-0.5 font-semibold text-[#0e0d0a]">Catalog</a>
+                    <span>/</span><span class="text-gray-300">${esc(shortTitle)}</span><span>/</span><span>Official Download Handoff</span>
+                </p>
+                <p class="rounded-full border border-[#f5c542]/30 bg-[#f5c542]/5 px-3 py-0.5 text-[#f5c542]">Secure External Redirect · Verify Checksums</p>
+            </div>
+        </div>
+
+        <section class="px-4 py-10 md:py-14">
+            <div class="mx-auto max-w-5xl space-y-6">
+
+                <!-- Hero -->
+                <div class="rounded-2xl border border-[#f5c542]/30 bg-[#16140f] p-6 md:p-8">
+                    <div class="flex flex-wrap items-start justify-between gap-4">
+                        <div class="flex min-w-0 gap-4">
+                            ${iconBox(ICON.disc).replace('h-9 w-9', 'h-12 w-12')}
+                            <div class="min-w-0">
+                                <p class="flex flex-wrap gap-2 font-mono text-[10px]">
+                                    <span class="rounded bg-white/10 px-1.5 py-0.5 uppercase text-gray-300">${esc(d.tags[0])}</span>
+                                    <span class="rounded bg-white/10 px-1.5 py-0.5 uppercase text-gray-300">${esc(d.tags[1])}</span>
+                                    <span class="rounded bg-[#f5c542]/20 px-1.5 py-0.5 uppercase text-[#f5c542]">${esc(d.tags[2])}</span>
+                                </p>
+                                <h1 class="mt-2 text-2xl font-bold tracking-tight text-white md:text-3xl">Download ${esc(d.title)}</h1>
+                                <p class="mt-2 max-w-xl text-sm leading-relaxed text-gray-400">${esc(d.desc)}</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-mono text-[10px] text-gray-500">HANDING OFF TO</p>
+                            <p class="mt-1 inline-block rounded-md border border-[#f5c542]/30 bg-[#f5c542]/5 px-2 py-1 font-mono text-[11px] text-[#f5c542]">${esc(d.host)}</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-white/10 bg-[#0e0d0a]/60 p-4">
+                        <div class="flex min-w-0 items-center gap-3">
+                            ${iconBox(ICON.down)}
+                            <div class="min-w-0">
+                                <p class="flex flex-wrap items-center gap-2 font-semibold text-white"><span class="break-all">${esc(d.file)}</span><span class="rounded bg-white/10 px-1.5 py-0.5 font-mono text-[10px] font-normal text-gray-400">${esc(d.size)}</span></p>
+                                <p class="mt-0.5 text-xs text-gray-500">Direct download page on ${esc(d.vendor)}'s official infrastructure</p>
+                            </div>
+                        </div>
+                        <a href="${esc(d.dl)}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-lg bg-[#f5c542] px-5 py-3 text-sm font-semibold text-[#0e0d0a] shadow-lg shadow-[#f5c542]/10 transition-colors hover:bg-[#ffd45e] focus:outline-none focus:ring-4 focus:ring-[#f5c542]/30">Open official download <span aria-hidden="true">↗</span></a>
+                    </div>
+
+                    <dl class="mt-4 grid grid-cols-2 gap-3 md:grid-cols-4">
+                        <div class="rounded-lg bg-[#0e0d0a] p-3"><dt class="font-mono text-[10px] text-gray-500">KERNEL TRACK</dt><dd class="mt-1 font-mono text-xs text-gray-300">${esc(d.spec.kernel)}</dd></div>
+                        <div class="rounded-lg bg-[#0e0d0a] p-3"><dt class="font-mono text-[10px] text-gray-500">ARCHITECTURE</dt><dd class="mt-1 font-mono text-xs text-gray-300">${esc(d.spec.arch)}</dd></div>
+                        <div class="rounded-lg bg-[#0e0d0a] p-3"><dt class="font-mono text-[10px] text-gray-500">FILESYSTEM DEFAULT</dt><dd class="mt-1 font-mono text-xs text-gray-300">${esc(d.spec.fs)}</dd></div>
+                        <div class="rounded-lg bg-[#0e0d0a] p-3"><dt class="font-mono text-[10px] text-gray-500">INIT SUBSYSTEM</dt><dd class="mt-1 font-mono text-xs text-gray-300">${esc(d.spec.init)}</dd></div>
+                    </dl>
+                </div>
+
+                <!-- 3 kartu -->
+                <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
+
+                    <article class="rounded-2xl border border-white/10 bg-[#16140f] p-6">
+                        <div class="flex items-center justify-between">${iconBox(ICON.chip)}<span class="font-mono text-[10px] text-gray-500">01 // HARDWARE</span></div>
+                        <h2 class="mt-4 text-xl font-semibold text-white">Architecture &amp; Flashing</h2>
+                        <p class="mt-2 text-sm leading-relaxed text-gray-400">Confirm your CPU instruction set before writing to portable media. Selecting the mismatched instruction set prevents boot execution.</p>
+                        <div class="mt-4 space-y-2">
+                            <div class="rounded-lg border border-white/10 bg-[#0e0d0a] p-3"><p class="font-mono text-[10px] text-[#f5c542]">X86_64 / AMD64</p><p class="mt-1 text-xs leading-relaxed text-gray-300">${esc(d.x86 || 'Standard Intel Core & AMD Ryzen 64-bit desktop/laptop workstations.')}</p></div>
+                            <div class="rounded-lg border border-white/10 bg-[#0e0d0a] p-3"><p class="font-mono text-[10px] text-[#f5c542]">AARCH64 / ARM64</p><p class="mt-1 text-xs leading-relaxed text-gray-300">${esc(d.slug === 'ubuntu' ? 'Apple Silicon virtualization, Ampere bare-metal, and Raspberry Pi 5.' : ARM[d.arm])}</p></div>
+                        </div>
+                        <h3 class="mt-5 font-mono text-xs font-semibold text-white">Hybrid Image Flashing</h3>
+                        <p class="mt-2 text-xs leading-relaxed text-gray-400">Most images are hybrid ISO-9660 formats bootable via BIOS and UEFI. Flash directly via Rufus (DD Mode), balenaEtcher, or a native terminal write:</p>
+                        <div class="mt-3">${codeBox('terminal', `<span class="text-gray-500"># </span>${esc(ddCmd)}`, ddCmd)}</div>
+                        <p class="mt-2 text-[11px] leading-relaxed text-[#f5c542]/80">Replace /dev/sdX with your USB device. This command erases the target disk.</p>
+                    </article>
+
+                    <article class="rounded-2xl border border-white/10 bg-[#16140f] p-6">
+                        <div class="flex items-center justify-between">${iconBox(ICON.lock)}<span class="font-mono text-[10px] text-gray-500">02 // INTEGRITY</span></div>
+                        <h2 class="mt-4 text-xl font-semibold text-white">Cryptographic Verification</h2>
+                        <p class="mt-2 text-sm leading-relaxed text-gray-400">Always verify SHA-256 hashes before flashing. Checksums detect bit rot caused by incomplete downloads and guarantee the file has not been altered upstream.</p>
+                        <div class="mt-4">${codeBox('bash — sha256 checksum', `<span class="text-gray-500">$ </span>${esc(verifyCmd)}\n<span class="text-[#f5c542]">${esc(d.file)}: OK</span>`, verifyCmd)}</div>
+                        ${sigBox}
+                        <p class="mt-3 text-[11px] leading-relaxed text-gray-500">Checksum file names differ between projects. Use the one listed on the official download page.</p>
+                    </article>
+
+                    <article class="rounded-2xl border border-white/10 bg-[#16140f] p-6">
+                        <div class="flex items-center justify-between">${iconBox(ICON.shield)}<span class="font-mono text-[10px] text-gray-500">03 // TRUST MODEL</span></div>
+                        <h2 class="mt-4 text-xl font-semibold text-white">Upstream Handoff Notice</h2>
+                        <p class="mt-2 text-sm leading-relaxed text-gray-400">Linux Field Guide is an educational index and manual. We strictly uphold software purity principles:</p>
+                        <ul class="mt-3 space-y-3 text-xs leading-relaxed text-gray-400">
+                            <li class="flex gap-2">${check}<span><strong class="text-white">Zero Intermediate Hosting:</strong> Files stream directly from ${esc(d.vendor)}'s official infrastructure.</span></li>
+                            <li class="flex gap-2">${check}<span><strong class="text-white">No Telemetry Wrappers:</strong> We run no tracking redirects, click-through tokens, or analytics cookies on handoff targets.</span></li>
+                            <li class="flex gap-2">${check}<span><strong class="text-white">Cryptographic Autonomy:</strong> Always compare downloaded digests against the official release indexes.</span></li>
+                        </ul>
+                        <div class="mt-4 rounded-lg border border-white/10 bg-[#0e0d0a] p-3">
+                            <p class="font-mono text-[10px] text-gray-500">OFFICIAL ${esc(d.vendor.toUpperCase())} RELEASE REGISTRY</p>
+                            <a href="${esc(d.dl)}" target="_blank" rel="noopener" class="mt-1 block break-all font-mono text-[11px] text-[#f5c542] hover:underline">${esc(d.dl)} ↗</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Bar bawah -->
+                <div class="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-white/10 bg-[#16140f] px-4 py-3 text-xs">
+                    <div class="flex flex-wrap items-center gap-3">
+                        <a href="#catalog" class="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-2 text-gray-200 hover:bg-white/10">← Back to catalog</a>
+                        <a href="#catalog" class="inline-flex items-center gap-1.5 rounded-md bg-white/5 px-3 py-2 text-gray-200 hover:bg-white/10">Browse other ${total - 1} distros</a>
+                    </div>
+                    <p class="font-mono text-[10px] text-[#f5c542]">Links open official project sites over HTTPS</p>
+                </div>
+            </div>
+        </section>`;
+    }
+
+    async function init() {
+        try {
+            const res = await fetch('data/distros.json');
+            if (!res.ok) throw new Error(res.status);
+            const all = await res.json();
+            const d = all.find(x => x.slug === window.routeParam);
+            if (!d) {
+                root.innerHTML = '<div class="px-4 py-24 text-center"><p class="text-sm text-gray-400">Distribution not found.</p><a href="#catalog" class="mt-4 inline-block rounded-md bg-[#f5c542] px-4 py-2 text-sm font-semibold text-[#0e0d0a]">Back to catalog</a></div>';
+                return;
+            }
+            render(d, all.length);
+        } catch (err) {
+            root.innerHTML = '<p class="px-4 py-24 text-center text-sm text-gray-400">Gagal memuat data distro. Pastikan file data/distros.json ada dan jalankan lewat server lokal.</p>';
+        }
+    }
+
+    // tombol copy
+    function onClick(e) {
+        const b = e.target.closest('[data-copy]');
+        if (!b || !navigator.clipboard) return;
+        navigator.clipboard.writeText(b.dataset.copy).then(() => {
+            const label = b.querySelector('span');
+            const old = label.textContent;
+            label.textContent = 'copied';
+            setTimeout(() => (label.textContent = old), 1500);
+        });
+    }
+    root.addEventListener('click', onClick);
+    init();
+})();
+</script>
