@@ -7,3 +7,6 @@
 
 # first-commit
 baru memasukkan bebarapa konten karena gabut jadi nnti akan diupdate lagi
+
+# nambahin-json
+mengumpulkan data-data ke json agar mudah dipakai
