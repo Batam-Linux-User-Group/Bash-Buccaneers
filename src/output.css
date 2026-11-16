@@ -2371,10 +2371,25 @@
     --tw-ease: var(--ease-out);
     transition-timing-function: var(--ease-out);
   }
+  .after\:absolute::after {
+    content: var(--tw-content);
+    position: absolute;
+  }
+  .after\:inset-0::after {
+    content: var(--tw-content);
+    inset: 0px;
+  }
+  .after\:rounded-xl::after {
+    content: var(--tw-content);
+    border-radius: var(--radius-xl);
+  }
   .focus-within\:border-\[\#f5c542\]\/50:focus-within {
     border-color: color-mix(in oklab, #f5c542 50%, transparent);
   }
   @media (hover: hover) {
+    .hover\:border-\[\#f5c542\]\/40:hover {
+      border-color: color-mix(in oklab, #f5c542 40%, transparent);
+    }
     .hover\:border-default:hover {
       border-color: var(--color-default);
     }
@@ -3391,6 +3406,11 @@
   syntax: "*";
   inherits: false;
 }
+@property --tw-content {
+  syntax: "*";
+  initial-value: "";
+  inherits: false;
+}
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -3458,6 +3478,7 @@
       --tw-backdrop-saturate: initial;
       --tw-backdrop-sepia: initial;
       --tw-ease: initial;
+      --tw-content: "";
     }
   }
 }

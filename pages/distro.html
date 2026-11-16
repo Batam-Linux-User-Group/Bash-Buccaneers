@@ -12,8 +12,8 @@
         partial: 'ARM builds exist as separate images or editions. Check the project site for supported devices.',
         false: 'No official ARM64 image is listed here. Use x86_64 hardware or a virtual machine.'
     };
-    const copyIcon = '<svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="2" d="M8 8h11v13H8zM5 16H4V3h11v2"/></svg>';
-    const iconBox = path => `<span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/5 text-[#f5c542]" aria-hidden="true"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${path}"/></svg></span>`;
+    const copyIcon = '<svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-width="2" d="M8 8h11v13H8zM5 16H4V3h11v2"/><\/svg>';
+    const iconBox = path => `<span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/5 text-[#f5c542]" aria-hidden="true"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${path}"/><\/svg></span>`;
     const ICON = {
         chip: 'M9 3v2m6-2v2M9 19v2m6-2v2M3 9h2m-2 6h2m14-6h2m-2 6h2M7 7h10v10H7z',
         lock: 'M7 11V8a5 5 0 0 1 10 0v3M6 11h12v10H6z',
@@ -21,7 +21,7 @@
         disc: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z',
         down: 'M12 4v11m0 0-4-4m4 4 4-4M5 20h14'
     };
-    const check = '<svg class="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#f5c542]" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 12 5 5L20 7"/></svg>';
+    const check = '<svg class="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#f5c542]" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 12 5 5L20 7"/><\/svg>';
 
     function codeBox(label, lines, copyText) {
         return `<div class="overflow-hidden rounded-lg border border-white/10 bg-[#0e0d0a]">
