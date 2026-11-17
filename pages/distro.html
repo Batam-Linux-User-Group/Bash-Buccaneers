@@ -1,4 +1,4 @@
-<div id="distro-root">
+<div id="distro-root" data-rv-wrap>
     <p class="px-4 py-24 text-center text-sm text-gray-500">Loading...</p>
 </div>
 
@@ -160,6 +160,7 @@
                 </div>
             </div>
         </section>`;
+        if (window.initReveal) window.initReveal();
     }
 
     async function init() {
